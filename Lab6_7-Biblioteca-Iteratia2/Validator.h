@@ -47,7 +47,7 @@ private:
 	/*
 	* Valideaza editura unei carti date
 	* @param publisher - string, nume de editura/publicatie
-	* @return - mesaj de eroare in cazul in care string-ul dat nu apare in lista de edituri valide
+	* @return - mesaj de eroare in cazul in care string-ul dat are mai putin de 2 caractere sau nu contine caractere speciale valide
 	*			string vid in caz contrar
 	*/
 	string validate_publisher(const string& publisher) const;

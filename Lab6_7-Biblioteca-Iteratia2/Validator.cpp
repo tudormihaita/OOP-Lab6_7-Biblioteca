@@ -34,15 +34,14 @@ string Validator::validate_genre(const string& genre) const{
 	else
 		return "";}
 
-string Validator::validate_publisher(const string& publisher) const{
-	vector<string> valid_publishers = { "Art", "Aquila", "Arthur", "Booklet", "Corint", "Dacia", "Humanitas", "Litera"};
+string Validator::validate_publisher(const string& publisher) const {
+	regex invalid_characters("[();'=~^!`?|/.+<>,@#]+");
 
-	vector<string>::iterator it = find(valid_publishers.begin(), valid_publishers.end(), publisher);
-
-	if (it == valid_publishers.end())
-		return "Editura invalida, introduceti una dintre editurile prezentate!";
+	if (publisher.length() < 2 || regex_search(publisher, invalid_characters))
+		return "Editura invalida, introduceti un sir de caractere valid!";
 	else
-		return "";}
+		return "";
+}
 
 string Validator::validate_year(const int& year) const{
 	if (year <= 1000 || year > 2023)

@@ -10,15 +10,10 @@ using std::ws;
 int ConsoleUI::read_book_id() {
 	int id;
 	cin >> id;
-	while (1) {
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "Introduceti un numar valid!\n";
-			cin >> id;
-		}
-		if (!cin.fail())
-			break;
+			throw InvalidInputException("Input invalid, introduceti un numar valid!\n");
 	}
 
 	return id;
@@ -53,15 +48,10 @@ string ConsoleUI::read_book_publisher() {
 const int ConsoleUI::read_book_release_year(){
 	int release_year;
 	cin >> release_year;
-	while (1) {
 		if (cin.fail()) {
 			cin.clear();
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			cout << "Introduceti un numar valid!\n";
-			cin >> release_year;
-		}
-		if (!cin.fail())
-			break;
+			throw InvalidInputException("Input invalid, introduceti un numar valid!\n");	
 	}
 
 	return release_year;
@@ -402,6 +392,9 @@ void ConsoleUI::run() {
 			}
 			catch (RepoException& re) {
 				cout << re.get_error_message();
+			}
+			catch (InvalidInputException& ie) {
+				cout << string(ie);
 			}
 		}
 		else {

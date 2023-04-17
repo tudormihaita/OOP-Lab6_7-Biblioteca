@@ -43,3 +43,15 @@ public:
 	}*/
 
 };
+
+
+class InvalidInputException {
+private:
+	const string error_msg;
+public:
+	InvalidInputException(const string& error) : error_msg{ error } {};
+
+	operator string() {
+		return this->error_msg;
+	}
+};

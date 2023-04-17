@@ -76,7 +76,7 @@ void Tests::run_validation_tests() {
 	catch (ValidationException& ve) {
 		assert(ve.get_error_messages() == "Numar identificare carte invalid, introduceti un numar cuprins intre 0 si 99!\n"
 			"Titlu invalid, introduceti un sir de caractere valid!\nNume autor invalid, introduceti un sir de caractere valid!\n"
-			"Gen invalid, introduceti un sir de caractere valid!\nEditura invalida, introduceti una dintre editurile prezentate!\n"
+			"Gen invalid, introduceti un sir de caractere valid!\nEditura invalida, introduceti un sir de caractere valid!\n"
 			"An invalid, introduceti un numar valid!\n");
 	}
 

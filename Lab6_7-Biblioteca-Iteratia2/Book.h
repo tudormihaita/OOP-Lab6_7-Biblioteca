@@ -32,11 +32,7 @@ public:
 		genre{ genre },
 		publisher { publisher },
 		year{ year } {
-		ISBN = to_string(id);
-		ISBN += "RO";
-		ISBN += this->title.at(0);
-		ISBN += this->author.at(0);
-		ISBN += to_string(this->year).substr(to_string(this->year).size() - 2);
+		ISBN = to_string(id); ISBN += "RO"; ISBN += this->title.at(0); ISBN += this->author.at(0); ISBN += to_string(this->year).substr(to_string(this->year).size() - 2);
 	};
 
 	//Copy Constructor
