@@ -45,6 +45,9 @@ public:
 };
 
 
+/*
+* Clasa de exceptii specifica UI-ului, pentru validat input de la tastatura
+*/
 class InvalidInputException {
 private:
 	const string error_msg;

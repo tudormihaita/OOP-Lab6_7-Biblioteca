@@ -47,6 +47,15 @@ public:
 		//std::cout << "Copy Constructor called here!!\n";
 	};
 
+	//Move Constructor
+	Book(Book&& other) = default;
+
+	//Book Class Copy Assignment Operator
+	Book& operator=(const Book&) = default;
+
+	//Book Class Move Assignment Operator
+	Book& operator=(Book&& other) = default;
+
 	//Destructor Book
 	~Book() = default;
 
@@ -60,7 +69,6 @@ public:
 		return this->title != other.title || this->author != other.author || this->year != other.year;
 	}
 
-	
 	//Returneaza ISBN-ul unei carti
 	string get_ISBN() const;
 

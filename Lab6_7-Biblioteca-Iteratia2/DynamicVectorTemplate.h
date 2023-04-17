@@ -27,7 +27,7 @@ public:
 
 	void push_back(TElem elem);
 
-	void erase(int pos);
+	void erase(IteratorVector<TElem>& it);
 
 	TElem& at(int pos) noexcept;
 
@@ -59,7 +59,7 @@ public:
 
 	TElem& operator*();
 	IteratorVector& operator++();
-	//IteratorVector& operator+(IteratorVector<TElem>& it, int pos);
+	IteratorVector& operator+(int new_pos);
 
 	bool operator==(const IteratorVector& other) noexcept;
 	bool operator!=(const IteratorVector& other) noexcept;
@@ -143,8 +143,14 @@ void DynamicVector<TElem>::push_back(TElem elem) {
 }
 
 template<typename TElem>
-void DynamicVector<TElem>::erase(int pos) {
-	//TElem& deleted = this->elems[pos];
+void DynamicVector<TElem>::erase(IteratorVector<TElem>& it) {
+	/*for (int i = pos; i < this->length - 1; i++)
+		this->elems[i] = this->elems[i + 1];
+	this->length--;*/
+
+	IteratorVector<TElem> begin = (*this);
+	int pos = distance(begin, it);
+
 	for (int i = pos; i < this->length - 1; i++)
 		this->elems[i] = this->elems[i + 1];
 	this->length--;
@@ -238,8 +244,9 @@ bool IteratorVector<TElem>::operator!=(const IteratorVector& other) noexcept {
 	return !(*this == other);
 }
 
-//template<typename TElem>
-//IteratorVector<TElem>& IteratorVector<TElem>::operator+(IteratorVector<TElem>& it, int pos) {
-//	it += pos;
-//	return *it;
-//}
+template<typename TElem>
+IteratorVector<TElem>& IteratorVector<TElem>::operator+(int new_pos) {
+	for (int i = 0; i < new_pos; i++)
+		this->pos++;
+	return (*this);
+}
